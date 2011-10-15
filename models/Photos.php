@@ -3,17 +3,14 @@
 namespace photoblog\models;
 
 use li3_geo\extensions\Geocoder;
-use li3_geo\extensions\data\behavior\Locatable;
 
-class Photo extends \li3_behaviors\extensions\Model {
+class Photos extends \li3_behaviors\extensions\Model {
 
 	public $validates = array();
 
 	protected $_meta = array('source' => 'fs.files');
 
-	protected $_actsAs = array(
-		'Locatable' => array('fields' => array('location.latitude', 'location.longitude'))
-	);
+	protected $_actsAs = array();
 
 	public function save($entity, $data = null, array $options = array()) {
 		if ($data) {

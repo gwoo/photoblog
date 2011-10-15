@@ -2,19 +2,19 @@
 
 namespace photoblog\controllers;
 
-use photoblog\models\Photo;
+use photoblog\models\Photos;
 use li3_geo\extensions\Geocoder;
 
 class PhotosController extends \lithium\action\Controller {
 
 	public function index($tags = null) {
 		$conditions = $tags ? compact('tags') : array();
-		$photos = Photo::all(compact('conditions'));
+		$photos = Photos::all(compact('conditions'));
 		return compact('photos');
 	}
 
 	public function view() {
-		$photo = Photo::first($this->request->id);
+		$photo = Photos::first($this->request->id);
 		return compact('photo');
 	}
 
@@ -22,12 +22,12 @@ class PhotosController extends \lithium\action\Controller {
 		$this->_render['template'] = 'index';
 		$coords = Geocoder::find('google', $place);
 
-		$photos = Photo::within(array($coords, $coords), array('limit' => 1));
+		$photos = Photos::within(array($coords, $coords), array('limit' => 1));
 		return compact('photos');
 	}
 
 	public function add() {
-		$photo = Photo::create();
+		$photo = Photos::create();
 
 		if (($this->request->data) && $photo->save($this->request->data)) {
 			$this->redirect(array('Photos::view', 'id' => $photo->_id));
@@ -37,7 +37,7 @@ class PhotosController extends \lithium\action\Controller {
 	}
 
 	public function edit() {
-		$photo = Photo::find($this->request->id);
+		$photo = Photos::find($this->request->id);
 
 		if (!$photo) {
 			$this->redirect('Photos::index');

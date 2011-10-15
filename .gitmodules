@@ -1,0 +1,9 @@
+[submodule "libraries/li3_geo"]
+	path = libraries/li3_geo
+	url = https://github.com/nateabele/li3_geo.git
+[submodule "libraries/lithium"]
+	path = libraries/lithium
+	url = https://github.com/UnionOfRAD/lithium.git
+[submodule "libraries/li3_behaviors"]
+	path = libraries/li3_behaviors
+	url = https://github.com/nateabele/li3_behaviors.git

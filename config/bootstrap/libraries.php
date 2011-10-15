@@ -24,5 +24,6 @@ Libraries::add('photoblog', array('default' => true));
  * Add some plugins
  */
 Libraries::add('li3_geo');
+Libraries::add('li3_behaviors');
 
 ?>
