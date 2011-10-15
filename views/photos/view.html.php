@@ -6,4 +6,6 @@
 	<?=$this->html->link($tag, array('Photos::index', 'args' => array($tag))); ?>
 <?php endforeach ?>
 
-<?=$this->html->image("/photos/view/{$photo->_id}.jpg", array('alt' => $photo->title)); ?>
+<?=$this->html->image("/photos/view/{$photo->_id}.jpg", array(
+	'alt' => $photo->title, 'width' => "100%"
+)); ?>
