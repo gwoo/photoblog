@@ -1,11 +1,13 @@
-<h1><?=$photo->title; ?></h1>
+<h1>
+	<?=$this->title($photo->title); ?>
+	<em>[ <?=$this->html->link('edit', array('Photos::edit', 'id' => $photo->_id)); ?> ]</em>
+</h1>
 <p><?=$photo->description; ?></p>
-<p><?=$this->html->link('Edit', array('Photos::edit', 'id' => $photo->_id)); ?></p>
 
-<?php foreach ($photo->tags as $tag): ?>
+<?php if ($photo->tags): echo 'tags:'; foreach ($photo->tags as $tag): ?>
 	<?=$this->html->link($tag, array('Photos::index', 'args' => array($tag))); ?>
-<?php endforeach ?>
+<?php endforeach; endif; ?>
 
-<?=$this->html->image("/photos/view/{$photo->_id}.jpg", array(
+<?=$this->html->image("/photos/view/{$photo->_id}.jpe", array(
 	'alt' => $photo->title, 'width' => "100%"
 )); ?>

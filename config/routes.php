@@ -11,7 +11,7 @@ use lithium\core\Environment;
 use lithium\action\Response;
 use photoblog\models\Photos;
 
-Router::connect('/photos/view/{:id:[0-9a-f]{24}}.jpg', array(), function($request) {
+Router::connect('/photos/view/{:id:[0-9a-f]{24}}.jpe', array(), function($request) {
 	return new Response(array(
 		'headers' => array('Content-type' => 'image/jpeg'),
 		'body' => Photos::first($request->id)->file->getBytes()
